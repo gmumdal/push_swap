@@ -6,7 +6,7 @@
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:10:21 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/23 19:49:17 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:39:53 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	both_command(t_stack *a, t_stack *b, char *command)
 		rotate(a, 1);
 		rotate(b, 1);
 	}
-	else
-		error_print();
+//	else
+//		error_print();
 }
 
 void	check_command(t_stack *a, t_stack *b, char *command)
@@ -102,6 +102,27 @@ void	check_ab(t_stack *a, t_stack *b)
 	ending_free(a, b);
 }
 
+void	tmp_print(t_stack *a, t_stack *b)
+{
+	t_node	*t;
+
+	t = a->top;
+	ft_printf("a : ");
+	while (t != 0)
+	{
+		ft_printf("%d ", t->num);
+		t = t->dn;
+	}
+	t = b->top;
+	ft_printf("\nb : ");
+	while (t != 0)
+	{
+		ft_printf("%d ", t->num);
+		t = t->dn;
+	}
+	ft_printf("\n");
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*a;
@@ -120,6 +141,7 @@ int	main(int ac, char **av)
 			break ;
 		check_command(a, b, tmp);
 		free(tmp);
+		tmp_print(a, b);
 	}
 	check_ab(a, b);
 }

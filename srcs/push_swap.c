@@ -6,7 +6,7 @@
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:10:21 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/24 11:16:32 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/24 21:37:19 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	both_command(t_stack *a, t_stack *b, char *command)
 		error_print();
 }
 
-void	check_command(t_stack *a, t_stack *b, char *command)
+int	check_command(t_stack *a, t_stack *b, char *command)
 {
 	if (ft_strncmp(command, "sa\n", ft_strlen(command)) == 0)
 		swap(a);
@@ -54,6 +54,7 @@ void	check_command(t_stack *a, t_stack *b, char *command)
 	else
 		both_command(a, b, command);
 	ft_putstr_fd(command, 1);
+	return (0);
 }
 
 int	ending_free(t_stack *a, t_stack *b)
@@ -77,6 +78,31 @@ int	ending_free(t_stack *a, t_stack *b)
 	}
 	free(b);
 	return (0);
+}
+
+int	check_ab(t_stack *a, t_stack *b, int flag)
+{
+	t_node	*tmp;
+
+	tmp = a->top;
+	if (flag == 1)
+	{
+		while (tmp->dn != 0)
+		{
+			if (tmp->num > tmp->dn->num)
+				return (0);
+			tmp = tmp->dn;
+		}
+		return (1);
+	}
+	tmp = b->top;
+	while (tmp->dn != 0)
+	{
+		if (tmp->num < tmp->dn->num)
+			return (0);
+		tmp = tmp->dn;
+	}
+	return (1);
 }
 
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:03:11 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/23 20:19:18 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:57:12 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	push(t_stack *dst, t_stack *src)
 
 void	rotate(t_stack *stack, int reverse)
 {
+	if (stack->top == NULL)
+		return ;
 	if (reverse == 0)
 		add_bot(stack, rm_top(stack));
 	else

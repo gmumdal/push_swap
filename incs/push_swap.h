@@ -6,7 +6,7 @@
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 20:57:54 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/23 22:02:31 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/24 22:52:51 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,18 @@ int		rm_bot(t_stack *stack);
 void	swap(t_stack *stack);
 void	push(t_stack *dst, t_stack *src);
 void	rotate(t_stack *stack, int reverse);
-void	check_command(t_stack *a, t_stack *b, char *command);
+int		check_command(t_stack *a, t_stack *b, char *command);
 void	both_command(t_stack *a, t_stack *b, char *command);
 int		sorting_three(t_stack *a, t_stack *b);
-int		pb_rule(t_stack *a, t_stack *b);
-int		pa_rule(t_stack *a, t_stack *b);
 int		sorting_al(t_stack *a, t_stack *b);
 int		check_ab(t_stack *a, t_stack *b, int flag);
 int		ending_free(t_stack *a, t_stack *b);
+void	flag_change_large(t_stack *push, t_stack *dst, int *flag, int *tri_num);
+int		check_large(t_stack *push, t_stack *dst);
+void	flag_change_small(t_stack *push, t_stack *dst, int *flag, int *tri_num);
+int		check_small(t_stack *push, t_stack *dst);
+int		pb_rule(t_stack *a, t_stack *b, int *flag, int *tri_num);
+int		pa_rule(t_stack *a, t_stack *b, int *flag, int *tri_num);
+void	final_sort(t_stack *a, t_stack *b, int tri_num);
 
 #endif

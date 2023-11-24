@@ -1,7 +1,7 @@
 NAME = push_swap
 BONUS = checker
 SRC_DIR = srcs
-SRCS = push_swap.c error_check.c stack.c command.c sorting.c
+SRCS = push_swap.c error_check.c stack.c command.c sorting.c sorting_utils.c
 SRCS_B = push_swap_bonus.c error_check_bonus.c stack_bonus.c command_bonus.c
 INC_DIR = incs
 INCS = push_swap.h
@@ -9,11 +9,7 @@ INCS_B = push_swap_bonus.h
 LIBFT = -Ilibft -Llibft -lft
 LIBFT_DIR = libft
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-
-ifeq ($(DEBUG),true)
-	CDEBUG = -g
-endif
+CFLAGS = -Wall -Wextra -Werror -g
 
 all : $(NAME)
 
