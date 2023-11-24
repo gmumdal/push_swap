@@ -6,7 +6,7 @@
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 20:28:50 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/21 21:19:48 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/23 20:30:13 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_print(void)
 {
-	write(1, "Error!\n", 13);
+	write(1, "Error\n", 6);
 	exit(0);
 }
 

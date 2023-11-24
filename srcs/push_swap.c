@@ -6,7 +6,7 @@
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:10:21 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/21 21:06:41 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:16:32 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_command(t_stack *a, t_stack *b, char *command)
 		swap(b);
 	else if (ft_strncmp(command, "pa\n", ft_strlen(command)) == 0)
 		push(a, b);
-	else if (ft_strncmp(command, "pa\n", ft_strlen(command)) == 0)
+	else if (ft_strncmp(command, "pb\n", ft_strlen(command)) == 0)
 		push(b, a);
 	else if (ft_strncmp(command, "ra\n", ft_strlen(command)) == 0)
 		rotate(a, 0);
@@ -56,25 +56,39 @@ void	check_command(t_stack *a, t_stack *b, char *command)
 	ft_putstr_fd(command, 1);
 }
 
+int	ending_free(t_stack *a, t_stack *b)
+{
+	t_node	*tmp;
+
+	tmp = a->top;
+	while (a->top != 0)
+	{
+		a->top = a->top->dn;
+		free(tmp);
+		tmp = a->top;
+	}
+	free(a);
+	tmp = b->top;
+	while (b->top != 0)
+	{
+		b->top = b->top->dn;
+		free(tmp);
+		tmp = b->top;
+	}
+	free(b);
+	return (0);
+}
 
 int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_node	*tmp;
 
 	if (ac < 2)
 		return (0);
 	stack_init(&a);
 	stack_init(&b);
 	input_a(a, ac, av);
-	check_command(a, b, "sa\n");
-	check_command(a, b, "ra\n");
-	tmp = a->top;
-	while (tmp != 0)
-	{
-		ft_putnbr_fd(tmp->num, 1);
-		ft_putchar_fd('\n', 1);
-		tmp = tmp->dn;
-	}
+	sorting_al(a, b);
+	ending_free(a, b);
 }

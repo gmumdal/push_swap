@@ -6,7 +6,7 @@
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:10:21 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/21 22:14:03 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:49:17 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_command(t_stack *a, t_stack *b, char *command)
 		swap(b);
 	else if (ft_strncmp(command, "pa\n", ft_strlen(command)) == 0)
 		push(a, b);
-	else if (ft_strncmp(command, "pa\n", ft_strlen(command)) == 0)
+	else if (ft_strncmp(command, "pb\n", ft_strlen(command)) == 0)
 		push(b, a);
 	else if (ft_strncmp(command, "ra\n", ft_strlen(command)) == 0)
 		rotate(a, 0);
@@ -82,7 +82,11 @@ void	check_ab(t_stack *a, t_stack *b)
 	t_node	*tmp;
 
 	if (b->top != 0)
+	{
 		ft_putstr_fd("KO\n", 1);
+		ending_free(a, b);
+		exit(0);
+	}
 	tmp = a->top;
 	while (tmp->dn != 0)
 	{

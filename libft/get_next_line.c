@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 19:13:56 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/21 22:09:19 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:55:54 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
-	static t_glist	*head;
+	static t_gnlist	*head;
 	char			*toss;
-	t_glist			*cur;
+	t_gnlist		*cur;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	cur = gn_lstadd_back(&head, fd);
+	cur = gnl_lstadd_back(&head, fd);
 	if (cur == 0)
 		return (0);
-	toss = gn_setstr(cur->leave, cur);
-	if (cur->leave[0] == 0 && gn_check(toss))
+	toss = gnl_setstr(cur->leave, cur);
+	if (cur->leave[0] == 0 && gnl_check(toss))
 	{
 		toss = read_n_join(toss, fd, BUFFER_SIZE);
-		toss = gn_substr(toss, cur, 0);
+		toss = gnl_substr(toss, cur, 0);
 	}
 	if (toss == 0)
-		gn_lstdel(&head, fd);
+		gnl_lstdel(&head, fd);
 	return (toss);
 }
 
-t_glist	*gn_lstadd_back(t_glist **head, int fd)
+t_gnlist	*gnl_lstadd_back(t_gnlist **head, int fd)
 {
-	t_glist	*cur;
-	t_glist	*tmp;
+	t_gnlist	*cur;
+	t_gnlist	*tmp;
 
 	cur = *head;
 	while (cur != NULL)
@@ -47,7 +47,7 @@ t_glist	*gn_lstadd_back(t_glist **head, int fd)
 			return (cur);
 		cur = cur->next;
 	}
-	cur = (t_glist *)malloc(sizeof(t_glist));
+	cur = (t_gnlist *)malloc(sizeof(t_gnlist));
 	if (cur == 0)
 		return (0);
 	cur->fd = fd;
@@ -60,7 +60,7 @@ t_glist	*gn_lstadd_back(t_glist **head, int fd)
 	return (cur);
 }
 
-char	*gn_setstr(char	*leave, t_glist *cur)
+char	*gnl_setstr(char *leave, t_gnlist *cur)
 {
 	char	*toss;
 	int		i;
@@ -107,14 +107,14 @@ char	*read_n_join(char *toss, int fd, int size)
 		}
 		buf[readsize] = 0;
 		if (size <= BUFFER_SIZE * count)
-			toss = gn_newstr(toss, &size);
-		if (gn_strcat(toss, buf) == 1)
+			toss = gnl_newstr(toss, &size);
+		if (gnl_strcat(toss, buf) == 1)
 			return (toss);
 	}
 	return (0);
 }
 
-char	*gn_substr(char *toss, t_glist *cur, int len)
+char	*gnl_substr(char *toss, t_gnlist *cur, int len)
 {
 	char	*compact;
 	int		i;

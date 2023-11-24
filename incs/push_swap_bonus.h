@@ -6,7 +6,7 @@
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 20:57:54 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/21 21:58:14 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:49:31 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_BONUS_H
 
 # include "libft.h"
-# include "get_next_line_bonus.h"
 
 typedef struct s_node
 {
@@ -27,6 +26,7 @@ typedef struct s_stack
 {
 	t_node	*top;
 	t_node	*bot;
+	int		size;
 }	t_stack;
 
 void	error_print(void);
@@ -43,5 +43,7 @@ void	push(t_stack *dst, t_stack *src);
 void	rotate(t_stack *stack, int reverse);
 void	check_command(t_stack *a, t_stack *b, char *command);
 void	both_command(t_stack *a, t_stack *b, char *command);
+void	ending_free(t_stack *a, t_stack *b);
+void	check_ab(t_stack *a, t_stack *b);
 
 #endif

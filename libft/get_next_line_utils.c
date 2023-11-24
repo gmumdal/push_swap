@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 23:37:28 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/21 22:06:42 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:55:13 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
-int	gn_check(char *toss)
+int	gnl_check(char *toss)
 {
 	if (toss == 0)
 		return (0);
@@ -25,10 +25,10 @@ int	gn_check(char *toss)
 	return (1);
 }
 
-void	gn_lstdel(t_glist **head, int fd)
+void	gnl_lstdel(t_gnlist **head, int fd)
 {
-	t_glist	*cur;
-	t_glist	*tmp;
+	t_gnlist	*cur;
+	t_gnlist	*tmp;
 
 	cur = *head;
 	if (cur == NULL || cur->fd == fd)
@@ -47,7 +47,7 @@ void	gn_lstdel(t_glist **head, int fd)
 	free(tmp);
 }
 
-char	*gn_newstr(char *toss, int *size)
+char	*gnl_newstr(char *toss, int *size)
 {
 	char	*twice;
 	int		i;
@@ -70,7 +70,7 @@ char	*gn_newstr(char *toss, int *size)
 	return (twice);
 }
 
-int	gn_strcat(char *toss, char *buf)
+int	gnl_strcat(char *toss, char *buf)
 {
 	int	flag;
 

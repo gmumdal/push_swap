@@ -6,7 +6,7 @@
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 22:19:01 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/21 21:20:32 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/23 13:21:17 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	stack_init(t_stack **stack)
 		error_print();
 	(*stack)->top = NULL;
 	(*stack)->bot = NULL;
+	(*stack)->size = 0;
 }
 
 void	add_top(t_stack *stack, int num)
@@ -36,6 +37,7 @@ void	add_top(t_stack *stack, int num)
 		stack->top->up = new;
 	new->up = NULL;
 	stack->top = new;
+	stack->size++;
 }
 
 void	add_bot(t_stack *stack, int num)
@@ -53,6 +55,7 @@ void	add_bot(t_stack *stack, int num)
 		stack->bot->dn = new;
 	new->dn = NULL;
 	stack->bot = new;
+	stack->size++;
 }
 
 int	rm_top(t_stack *stack)
@@ -68,6 +71,7 @@ int	rm_top(t_stack *stack)
 		stack->bot = NULL;
 	else
 		stack->top->up = NULL;
+	stack->size--;
 	return (num);
 }
 
@@ -84,5 +88,6 @@ int	rm_bot(t_stack *stack)
 		stack->top = NULL;
 	else
 		stack->bot->dn = NULL;
+	stack->size--;
 	return (num);
 }
