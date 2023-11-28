@@ -4,7 +4,7 @@ SRC_DIR = srcs
 SRCS = push_swap.c error_check.c stack.c \
 	command.c sorting.c hard_sorting.c \
 	division.c tri_check.c merge.c \
-	division_in_a.c merge_utils.c
+	division_in_a.c merge_flag.c
 SRCS_B = push_swap_bonus.c error_check_bonus.c stack_bonus.c command_bonus.c
 INC_DIR = incs
 INCS = push_swap.h
