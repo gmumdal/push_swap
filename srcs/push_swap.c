@@ -6,7 +6,7 @@
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:10:21 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/24 21:37:19 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/27 20:25:05 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,16 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
+	t_data	data;
 
 	if (ac < 2)
 		return (0);
 	stack_init(&a);
 	stack_init(&b);
 	input_a(a, ac, av);
-	sorting_al(a, b);
-	ending_free(a, b);
+	data.size = a->size;
+	if (check_ab(a, b, 1))
+		return (ending_free(a, b));
+	sorting_al(a, b, &data);
+	return (ending_free(a, b));
 }

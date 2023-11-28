@@ -6,7 +6,7 @@
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 20:28:50 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/23 20:30:13 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/26 15:16:41 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ void	input_a(t_stack *a, int ac, char **av)
 	i = 0;
 	while (++i < ac)
 	{
-		tmp = ft_split(av[i], ' ');
+		if (ft_strchr(av[i], '\n'))
+			tmp = ft_split(av[i], '\n');
+		else
+			tmp = ft_split(av[i], ' ');
 		j = 0;
 		while (tmp[j] != 0)
 		{

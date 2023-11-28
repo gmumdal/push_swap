@@ -6,7 +6,7 @@
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 20:57:54 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/24 22:52:51 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:50:03 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
+typedef struct s_data
+{
+	int	size;
+	int	tri_n;
+	int	*tri_s;
+}	t_data;
+
 void	error_print(void);
 int		ps_atoi(char *str);
 void	input_a(t_stack *a, int ac, char **av);
@@ -43,16 +50,30 @@ void	push(t_stack *dst, t_stack *src);
 void	rotate(t_stack *stack, int reverse);
 int		check_command(t_stack *a, t_stack *b, char *command);
 void	both_command(t_stack *a, t_stack *b, char *command);
-int		sorting_three(t_stack *a, t_stack *b);
-int		sorting_al(t_stack *a, t_stack *b);
 int		check_ab(t_stack *a, t_stack *b, int flag);
 int		ending_free(t_stack *a, t_stack *b);
-void	flag_change_large(t_stack *push, t_stack *dst, int *flag, int *tri_num);
-int		check_large(t_stack *push, t_stack *dst);
-void	flag_change_small(t_stack *push, t_stack *dst, int *flag, int *tri_num);
-int		check_small(t_stack *push, t_stack *dst);
-int		pb_rule(t_stack *a, t_stack *b, int *flag, int *tri_num);
-int		pa_rule(t_stack *a, t_stack *b, int *flag, int *tri_num);
-void	final_sort(t_stack *a, t_stack *b, int tri_num);
+int		sorting_al(t_stack *a, t_stack *b, t_data *data);
+int		sorting_three(t_stack *a, t_stack *b);
+int		sorting_four(t_stack *a, t_stack *b);
+int		sorting_five(t_stack *a, t_stack *b);
+
+int		tri_num_check(int size, int *push_flag);
+int		tri_direction_check(int tri_index);
+int		tri_size_check(int size, int tri_index, int tri_num, int push_flag);
+int		max_check(int *n, int size);
+int		min_check(int *n, int size);
+void	division(t_stack *a, t_stack *b, t_data *data, int push_flag);
+int		division_in_a(t_stack *a, t_stack *b, int tri_direct, int tri_size);
+int		division_in_b(t_stack *a, t_stack *b, int tri_direct, int tri_size);
+int		division_rotate_a(t_stack *a, t_stack *b, int tri_direct, int tri_size);
+int		division_push_b(t_stack *a, t_stack *b, int tri_direct, int tri_size);
+void	merge(t_stack *a, t_stack *b, t_data *data, int push_flag);
+void	first_setting(t_stack *a, t_stack *b, t_data *data, int push_flag);
+void	merge_in_a(t_stack *a, t_stack *b, t_data *data, int *index);
+void	merge_in_b(t_stack *a, t_stack *b, t_data *data, int *index);
+void	merge_a_flag0(t_stack *a, t_stack *b, t_data *data, int *index);
+void	merge_a_flag1(t_stack *a, t_stack *b, t_data *data, int *index);
+void	merge_b_flag0(t_stack *a, t_stack *b, t_data *data, int *index);
+void	merge_b_flag1(t_stack *a, t_stack *b, t_data *data, int *index);
 
 #endif

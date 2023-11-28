@@ -1,7 +1,10 @@
 NAME = push_swap
 BONUS = checker
 SRC_DIR = srcs
-SRCS = push_swap.c error_check.c stack.c command.c sorting.c sorting_utils.c
+SRCS = push_swap.c error_check.c stack.c \
+	command.c sorting.c hard_sorting.c \
+	division.c tri_check.c merge.c \
+	division_in_a.c merge_utils.c
 SRCS_B = push_swap_bonus.c error_check_bonus.c stack_bonus.c command_bonus.c
 INC_DIR = incs
 INCS = push_swap.h
@@ -18,7 +21,7 @@ $(NAME) : $(addprefix $(SRC_DIR)/, $(SRCS)) $(addprefix $(INC_DIR)/, $(INCS))
 	$(CC) $(CFLAGS) -o $@ $(addprefix $(SRC_DIR)/, $(SRCS)) -I$(INC_DIR) $(LIBFT)
 
 clean :
-	make -C $(LIBFT_DIR) fclean
+	make -sC $(LIBFT_DIR) fclean
 
 fclean : clean
 	rm -rf $(NAME) $(BONUS)
