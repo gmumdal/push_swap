@@ -12,7 +12,7 @@ INCS_B = push_swap_bonus.h
 LIBFT = -Ilibft -Llibft -lft
 LIBFT_DIR = libft
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 

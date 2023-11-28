@@ -6,7 +6,7 @@
 /*   By: hyeongsh <hyeongsh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:44:43 by hyeongsh          #+#    #+#             */
-/*   Updated: 2023/11/28 11:29:27 by hyeongsh         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:38:07 by hyeongsh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int	sorting_al(t_stack *a, t_stack *b, t_data *data)
 		error_print();
 	division(a, b, data, push_flag);
 	merge(a, b, data, push_flag);
+	free(data->tri_s);
 	return (1);
 }
